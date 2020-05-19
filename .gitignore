@@ -50,6 +50,9 @@ typings/
 # Optional npm cache directory
 .npm
 
+# Typescript builds
+dist/
+
 # Optional eslint cache
 .eslintcache
 
