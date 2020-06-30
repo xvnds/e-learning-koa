@@ -2,6 +2,8 @@ import * as Koa from 'koa';
 import * as Router from 'koa-router';
 import handleResponse from './utils/handleResponse';
 
+import frameRouter from './frame/router';
+import storyRouter from './story/router';
 import userRouter from './user/router';
 
 const router: Router = new Router();
@@ -15,6 +17,8 @@ router.get('/', async (ctx: Koa.Context) => {
 
 router.use(
     '/api',
+    frameRouter,
+    storyRouter,
     userRouter
 );
 

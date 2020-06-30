@@ -4,21 +4,28 @@
   "description": "E-learning server side",
   "main": "index.js",
   "scripts": {
+    "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "build": "tsc --build tsconfig.json",
-    "watch": "npm run watch:nodemon && npm run watch:tsc",
     "watch:nodemon": "nodemon .",
-    "watch:tsc": "tsc -w"
+    "watch:tsc": "tsc -w",
+    "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate",
+    "migration:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run"
   },
   "author": "BCD Pinpoint",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "bcryptjs": "^2.4.3",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.12.0",
     "koa-bodyparser": "^4.3.0",
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.1",
     "koa-router": "^8.0.8",
+    "mysql": "^2.18.1",
     "pg": "^8.2.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.24",
@@ -30,6 +37,7 @@
     "@types/koa-json": "^2.0.18",
     "@types/koa-logger": "^3.1.1",
     "@types/koa-router": "^7.4.1",
-    "@types/node": "^14.0.1"
+    "@types/node": "^14.0.1",
+    "ts-node": "^8.10.1"
   }
 }
