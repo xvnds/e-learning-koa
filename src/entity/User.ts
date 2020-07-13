@@ -9,16 +9,19 @@ export class User {
     @PrimaryGeneratedColumn()
     public id: number;
 
-    @Column()
+    @Column({ nullable: true, type: 'text' })
     public firstName: string;
 
-    @Column()
+    @Column({ nullable: true, type: 'text' })
     public lastName: string;
 
-    @Column()
+    @Column({ nullable: true, type: 'text' })
     public username: string;
 
-    @Column({ nullable: false, type: 'text' })
+    @Column({ nullable: true, type: 'text' })
+    public gender: string;
+
+    @Column({ nullable: true, type: 'text' })
     public password: string;
 
     @Column({ nullable: true, type: 'text' })

@@ -2,6 +2,7 @@ import * as Joi from 'joi';
 import * as Router from 'koa-router';
 import {
     createUser,
+    createUserTemp,
     deleteUser,
     login
 } from './controller';
@@ -26,6 +27,15 @@ router.post(
         userType: Joi.number().required()
     }),
     createUser
+)
+
+router.post(
+    "/user/tmp",
+    validateBodyPayload({
+        firstName: Joi.string().required(),
+        gender: Joi.string()
+    }),
+    createUserTemp
 )
 
 router.post(

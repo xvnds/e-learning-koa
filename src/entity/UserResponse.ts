@@ -10,26 +10,26 @@ export class UserResponse {
     public id: number;
 
     @ManyToOne(type => User, User => User.responses, {
-        onDelete: 'RESTRICT',
-        onUpdate: 'RESTRICT',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
     })
     public user: User | null;
 
     @ManyToOne(type => Story, Story => Story.userResponses, {
-        onDelete: 'RESTRICT',
-        onUpdate: 'RESTRICT',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
     })
     public story: Story | null;
 
     @ManyToOne(type => Frame, Frame => Frame.userResponses, {
-        onDelete: 'RESTRICT',
-        onUpdate: 'RESTRICT',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
     })
     public frame: Frame | null;
 
     @ManyToOne(type => Button, Button => Button.userResponses, {
-        onDelete: 'RESTRICT',
-        onUpdate: 'RESTRICT',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
     })
     public button: Button | null;
 }

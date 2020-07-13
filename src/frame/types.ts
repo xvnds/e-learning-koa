@@ -5,7 +5,12 @@ export interface ICreateFrameBody {
     storyId: number;
     frameTypeId?: number;
     buttons: Button[];
-    bgUri?: string;
+    frameBG?: FrameBG[];
+}
+
+export interface FrameBG {
+    uri: string;
+    type: string;
 }
 
 export interface Button {

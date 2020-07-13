@@ -13,6 +13,17 @@ export const createUser = async (ctx: Context) => {
     }
 };
 
+export const createUserTemp = async (ctx: Context) => {
+    const { body } = ctx.request;
+    const Svc = new Service();
+    try {
+        const result = await Svc.createUserTemp(body);
+        return handleResponse(ctx, result, 200);
+    } catch (error) {
+        return handleResponse(ctx, error, 500);
+    }
+};
+
 export const deleteUser = async (ctx: Context) => {
     const { id } = ctx.query;
     const Svc = new Service();

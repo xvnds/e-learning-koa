@@ -5,6 +5,7 @@ import handleResponse from './utils/handleResponse';
 import frameRouter from './frame/router';
 import storyRouter from './story/router';
 import userRouter from './user/router';
+import userResponseRouter from './userResponse/router';
 
 const router: Router = new Router();
 
@@ -19,7 +20,8 @@ router.use(
     '/api',
     frameRouter,
     storyRouter,
-    userRouter
+    userRouter,
+    userResponseRouter
 );
 
 router.all('*', ctx => {

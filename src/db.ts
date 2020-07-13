@@ -2,7 +2,9 @@ import { createConnection } from 'typeorm';
 import config from './config'
 import { Button } from "./entity/Button";
 import { ButtonType } from "./entity/ButtonType";
+import { Conclusion } from "./entity/Conclusion";
 import { Frame } from "./entity/Frame";
+import { FrameBG } from "./entity/FrameBG";
 import { FrameType } from "./entity/FrameType";
 import { PersonalityType } from "./entity/PersonalityType";
 import { Story } from "./entity/Story";
@@ -17,7 +19,9 @@ const { DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_NAME} = config;
 const entities = [
     Button,
     ButtonType,
+    Conclusion,
     Frame,
+    FrameBG,
     FrameType,
     PersonalityType,
     Story,

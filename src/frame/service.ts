@@ -6,6 +6,7 @@ import errorMsg from '../utils/error';
 import { Button } from '../entity/Button';
 import { ButtonType } from '../entity/ButtonType';
 import { Frame } from '../entity/Frame';
+import { FrameBG } from '../entity/FrameBG';
 import { FrameType } from '../entity/FrameType';
 import { Story } from '../entity/Story';
 import { User } from '../entity/User';
@@ -13,6 +14,7 @@ import { User } from '../entity/User';
 const ButtonRepository = () => getRepository(Button);
 const ButtonTypeRepository = () => getRepository(ButtonType);
 const FrameRepository = () => getRepository(Frame);
+const FrameBGRepository = () => getRepository(FrameBG);
 const FrameTypeRepository = () => getRepository(FrameType);
 const StoryRepository = () => getRepository(Story);
 const UserRepository = () => getRepository(User);
@@ -41,7 +43,6 @@ export default class StoryService {
                 user,
                 title: body.title,
                 text: body.text,
-                bgUri: body.bgUri
             }
             const frame = await FrameRepository().save(data);
             const buttonType = await ButtonTypeRepository().findOne(1);
@@ -55,6 +56,16 @@ export default class StoryService {
                 }
             })
             ButtonRepository().save(buttons);
+            if (body.frameBG) {
+                const backgrounds = body.frameBG.map( background => {
+                    return {
+                        frame,
+                        uri: background.uri,
+                        type: background.type,
+                    }
+                })
+                FrameBGRepository().save(backgrounds);
+            }
             if (body.fromButtonId) {
                 let fromButton = await ButtonRepository().findOne(body.fromButtonId);
                 if (!fromButton) {

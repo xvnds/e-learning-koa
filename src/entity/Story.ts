@@ -1,4 +1,5 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany} from "typeorm";
+import { Conclusion } from './Conclusion';
 import { StoryType } from './StoryType';
 import { User } from './User';
 import { Frame } from './Frame';
@@ -58,4 +59,10 @@ export class Story {
         onUpdate: 'RESTRICT',
     })
     public personalityTypes: PersonalityType[] | null;
+
+    @OneToMany(type => Conclusion, Conclusion => Conclusion.story, {
+        onDelete: 'RESTRICT',
+        onUpdate: 'RESTRICT',
+    })
+    public conclusions: Conclusion[] | null;
 }

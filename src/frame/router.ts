@@ -21,7 +21,10 @@ router.post(
         fromButtonId: Joi.number().required().allow(null),
         storyId: Joi.number().required(),
         frameTypeId: Joi.number().required(),
-        bgUri: Joi.string()
+        frameBG: Joi.array().items(Joi.object().keys({
+            uri: Joi.string().required(),
+            type: Joi.string().required()
+        })).required(),
     }),
     authenticateUser,
     createFrame

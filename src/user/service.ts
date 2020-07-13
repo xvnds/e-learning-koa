@@ -5,6 +5,7 @@ import {
     ICreateUserResponse,
     ILoginBody,
     IPostUserBody,
+    IPostUserTempBody,
     IUser
 } from './types';
 import config from '../config';
@@ -43,6 +44,27 @@ export default class UserService {
                 phoneNumber,
                 userType,
                 password: hash
+            }
+            const newUser = await UserRepository().save(data);
+            const token = await jwt.sign({...newUser}, config.APP_SECRET, { expiresIn: config.TOKEN_EXP });
+            return { token, user: newUser };
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    }
+
+    public async createUserTemp(body: IPostUserTempBody): Promise<ICreateUserResponse> {
+        try {
+            const { firstName, gender } = body;
+            const userType = await UserTypeRepository().findOne(3);
+            if (!userType) {
+                return Promise.reject(errorMsg(404, "User type does not exist."))
+            }
+
+            const data = {
+                gender,
+                firstName,
+                userType,
             }
             const newUser = await UserRepository().save(data);
             const token = await jwt.sign({...newUser}, config.APP_SECRET, { expiresIn: config.TOKEN_EXP });
