@@ -2,6 +2,7 @@ import * as Koa from 'koa';
 import * as Router from 'koa-router';
 import handleResponse from './utils/handleResponse';
 
+import conclusionRouter from './conclusion/router';
 import frameRouter from './frame/router';
 import storyRouter from './story/router';
 import userRouter from './user/router';
@@ -18,6 +19,7 @@ router.get('/', async (ctx: Koa.Context) => {
 
 router.use(
     '/api',
+    conclusionRouter,
     frameRouter,
     storyRouter,
     userRouter,

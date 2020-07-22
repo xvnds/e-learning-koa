@@ -86,6 +86,8 @@ export default class StoryService {
             const frame = await FrameRepository()
                 .createQueryBuilder('Frame')
                 .leftJoinAndSelect('Frame.buttons', 'Buttons')
+                .leftJoinAndSelect('Frame.backgrounds', 'Backgrounds')
+                .leftJoinAndSelect('Frame.conclusion', 'Conclusion')
                 .leftJoinAndSelect('Frame.story', 'Story')
                 .leftJoinAndSelect('Buttons.destination', 'Destination')
                 .leftJoinAndSelect('Frame.frameType', 'FrameType')

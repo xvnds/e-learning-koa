@@ -1,4 +1,5 @@
 import { getRepository } from 'typeorm';
+import { sumBy } from 'lodash';
 import {
     ICreateResponseBody
 } from './types';
@@ -69,7 +70,10 @@ export default class StoryService {
                 const err: any = await errorMsg(404, "No responses found");
                 return Promise.reject(err);
             }
-            return response;
+            const totalScore = sumBy(response, item => {
+                return parseInt(item.button.score)
+            })
+            return {response, totalScore};
         } catch (err) {
             return Promise.reject(err);
         }

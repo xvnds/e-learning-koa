@@ -10,6 +10,9 @@ export class Conclusion {
     @Column({ nullable: false, type: 'text' })
     public text: string;
 
+    @Column({ nullable: true, type: 'integer' })
+    public perfectScore: number | null;
+
     @ManyToOne(type => Story, Story => Story.conclusions, {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
