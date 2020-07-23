@@ -1,10 +1,10 @@
 {
    "type": "postgres",
-   "host": "localhost",
+   "host": "e-learning-db.c0otg9zeot4i.ap-southeast-1.rds.amazonaws.com",
    "port": 5432,
-   "username": "xandy",
-   "password": "agustd",
-   "database": "elearningdb",
+   "username": "bcdpinpoint",
+   "password": "QKJqtgtcg64BmuFg",
+   "database": "e-learning-db",
    "synchronize": false,
    "logging": false,
    "entities": [
