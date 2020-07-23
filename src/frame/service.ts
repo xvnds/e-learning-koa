@@ -90,6 +90,7 @@ export default class StoryService {
                 .leftJoinAndSelect('Frame.conclusion', 'Conclusion')
                 .leftJoinAndSelect('Frame.story', 'Story')
                 .leftJoinAndSelect('Buttons.destination', 'Destination')
+                .leftJoinAndSelect('Buttons.conclusion', 'ButtonConclusion')
                 .leftJoinAndSelect('Frame.frameType', 'FrameType')
                 .where('Frame.id = :id', { id })
                 .getOne();

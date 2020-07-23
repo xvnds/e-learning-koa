@@ -1,0 +1,24 @@
+{
+    "type": "postgres",
+    "host": "e-learning-db.c0otg9zeot4i.ap-southeast-1.rds.amazonaws.com",
+    "port": 5432,
+    "username": "bcdpinpoint",
+    "password": "QKJqtgtcg64BmuFg",
+    "database": "e-learning-db",
+    "synchronize": false,
+    "logging": false,
+    "entities": [
+       "src/entity/**/*.ts"
+    ],
+    "migrations": [
+       "src/migration/**/*.ts"
+    ],
+    "subscribers": [
+       "src/subscriber/**/*.ts"
+    ],
+    "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+   }
+ }

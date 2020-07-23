@@ -1,5 +1,6 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany} from "typeorm";
 import { ButtonType } from './ButtonType';
+import { Conclusion } from './Conclusion';
 import { Frame } from './Frame';
 import { UserResponse } from './UserResponse';
 import { PersonalityType } from './PersonalityType';
@@ -23,6 +24,12 @@ export class Button {
         onUpdate: 'CASCADE',
     })
     public frame: Frame | null;
+
+    @ManyToOne(type => Conclusion, Conclusion => Conclusion.buttons, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+    })
+    public conclusion: Conclusion | null;
 
     @ManyToOne(type => PersonalityType, PersonalityType => PersonalityType.buttons, {
         onDelete: 'CASCADE',

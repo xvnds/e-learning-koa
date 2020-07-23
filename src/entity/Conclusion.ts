@@ -1,7 +1,7 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany} from "typeorm";
+import { Button } from './Button';
 import { Frame } from './Frame';
 import { Story } from './Story';
-
 @Entity()
 export class Conclusion {
     @PrimaryGeneratedColumn()
@@ -24,4 +24,10 @@ export class Conclusion {
         onUpdate: 'RESTRICT',
     })
     public fromFrames: Frame[];
+
+    @OneToMany(type => Button, Button => Button.conclusion, {
+        onDelete: 'RESTRICT',
+        onUpdate: 'RESTRICT',
+    })
+    public buttons: Button[];
 }
