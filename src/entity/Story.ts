@@ -3,6 +3,7 @@ import { Conclusion } from './Conclusion';
 import { StoryType } from './StoryType';
 import { User } from './User';
 import { Frame } from './Frame';
+import { StoryCharacter } from './StoryCharacter';
 import { UserResponse } from './UserResponse';
 import { UserStory } from './UserStory';
 import { PersonalityType } from './PersonalityType';
@@ -65,4 +66,10 @@ export class Story {
         onUpdate: 'RESTRICT',
     })
     public conclusions: Conclusion[] | null;
+
+    @OneToMany(type => StoryCharacter, StoryCharacter => StoryCharacter.story, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+    })
+    public characters: StoryCharacter[] | null;
 }

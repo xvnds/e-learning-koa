@@ -1,7 +1,7 @@
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany} from "typeorm";
+import { Background } from './Background';
 import { Conclusion } from './Conclusion';
-import { User } from './User';
-import { FrameBG } from './FrameBG';
+import { FrameCharacter } from './FrameCharacter';
 import { FrameType } from './FrameType';
 import { Story } from './Story';
 import { Button } from './Button';
@@ -27,12 +27,6 @@ export class Frame {
     @OneToMany(type => Button, Button => Button.destination)
     public fromButton: Button[];
 
-    @ManyToOne(type => User, User => User.stories, {
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-    })
-    public user: User | null;
-
     @ManyToOne(type => FrameType, FrameType => FrameType.frames, {
         onDelete: 'RESTRICT',
         onUpdate: 'RESTRICT',
@@ -57,9 +51,15 @@ export class Frame {
     })
     public userResponses: UserResponse[];
 
-    @OneToMany(type => FrameBG, FrameBG => FrameBG.frame, {
+    @ManyToOne(type => Background, Background => Background.frames, {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
     })
-    public backgrounds: FrameBG[];
+    public background: Background;
+
+    @OneToMany(type => FrameCharacter, FrameCharacter => FrameCharacter.frame, {
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+    })
+    public characters: FrameCharacter[];
 }
